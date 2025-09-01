@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Profiles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar with character avatars -->
+        <div class="sidebar">
+            <button class="avatar-btn active" data-character="zoe">
+                <img src="../member/img/z2.png" alt="Zoe">
+            </button>
+            <button class="avatar-btn" data-character="roxy">
+                <img src="../member/img/r2.png" alt="Roxy">
+            </button>
+            <button class="avatar-btn" data-character="skyler">
+                <img src="../member/img/s2.png" alt="Skyler">
+            </button>
+            <button class="avatar-btn" data-character="TYRA">
+                <img src="../member/img/t2.png" alt="TYRA">
+            </button>
+            <button class="avatar-btn" data-character="Falen">
+                <img src="../member/img/f2.png" alt="Falen">
+            </button>
+            <button class="avatar-btn" data-character="ZEPHYROS">
+                <img src="../member/img/z3.png" alt="ZEPHYROS">
+            </button>
+            <button class="back-btn" style="width: 64px;
+            height: 64px;
+            padding: 0;
+            border: none;
+            background: #e0e0e0; /* สีพื้นหลังรองรับ */
+            margin-bottom: 10px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+            position: relative;"  onclick="window.history.back();">
+                &#8592; 
+            </button>
+
+            <!-- Add more character buttons here -->
+        </div>
+
+        <!-- Main content area -->
+        <main class="content">
+            <div class="big-bg-name" id="bigBgName"></div>
+            <!-- Character profiles will be inserted here by JavaScript -->
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

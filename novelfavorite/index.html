@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นิยาย - Lexstall V</title>
+    <link rel="stylesheet" href="../novel/style.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/showToast.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/" class="active">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div style="max-width: 1200px; position: relative;">
+                        <div class="user-dropdown" id="userDropdown">
+                            <div id="userDropdownContent">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+               <!-- <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop" >สินค้า</a>
+                    <a href="/novel/" class="active">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <h1 class="page-title">รายการโปรด</h1>
+
+    <!--<ul class="categories">
+        <li class="category-item active">ทั้งหมด</li>
+        <li class="category-item">แฟนตาซี</li>
+        <li class="category-item">รัก</li>
+        <li class="category-item">แอคชั่นผจญภัย</li>
+        <li class="category-item">ดราม่า</li>
+        <li class="category-item">คอมเมดี้</li>
+        <li class="category-item">ลึกลับสยอง</li>
+    </ul>-->
+
+    <div class="novels-container">
+        
+        <div class="novel-card">
+            <img  alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">คำบรรยาย</p>
+            
+
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+            <p class="novel-status">สถานะ :</p>
+        </div>
+
+       <!--- <div class="novel-card">
+            <img src="/api/placeholder/100/150" alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">ผู้เขียน</p>
+            <p class="novel-subtitle">รัก/คำบรรยาย</p>
+            
+            <div class="novel-stats">
+                <div class="novel-stat">👁️ 1</div>
+                <div class="novel-stat">💬 1</div>
+                <div class="novel-stat">👍 1</div>
+            </div>
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+        </div>
+
+        <div class="novel-card">
+            <img src="/api/placeholder/100/150" alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">ผู้เขียน</p>
+            <p class="novel-subtitle">Engคำบรรยาย</p>
+            
+            <div class="novel-stats">
+                <div class="novel-stat">👁️ 1</div>
+                <div class="novel-stat">💬 1</div>
+                <div class="novel-stat">👍 1</div>
+            </div>
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+        </div>
+
+        <div class="novel-card">
+            <img src="/api/placeholder/100/150" alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">ผู้เขียน</p>
+            <p class="novel-subtitle">รัก/คำบรรยาย</p>
+            
+            <div class="novel-stats">
+                <div class="novel-stat">👁️ 1</div>
+                <div class="novel-stat">💬 1</div>
+                <div class="novel-stat">👍 1</div>
+            </div>
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+        </div>
+
+        <div class="novel-card">
+            <img src="/api/placeholder/100/150" alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">ผู้เขียน</p>
+            <p class="novel-subtitle">Engคำบรรยาย</p>
+            
+            <div class="novel-stats">
+                <div class="novel-stat">👁️ 1</div>
+                <div class="novel-stat">💬 1</div>
+                <div class="novel-stat">👍 1</div>
+            </div>
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+        </div>
+
+        <div class="novel-card highlighted">
+            <img src="/api/placeholder/100/150" alt="Novel cover" class="novel-image">
+            
+            <h2 class="novel-title">ชื่อนิยาย</h2>
+            <p class="novel-author">ผู้เขียน</p>
+            <p class="novel-subtitle">รัก/คำบรรยาย</p>
+            
+            <div class="novel-stats">
+                <div class="novel-stat">👁️ 1</div>
+                <div class="novel-stat">💬 1</div>
+                <div class="novel-stat">👍 1</div>
+            </div>
+            
+            <div class="novel-divider"></div>
+            <p class="novel-stat">รวมตอน/เรื่องสั้นของนิยาย</p>
+        </div>-->
+    </div>
+
+   <!-- <div class="pagination">
+        <span class="pagination-arrow">« Previous</span>
+        <div class="page-item active">1</div>
+        <div class="page-item">2</div>
+        <div class="page-item">3</div>
+        <div class="page-item">...</div>
+        <div class="page-item">47</div>
+        <div class="page-item">48</div>
+        <span class="pagination-arrow">Next »</span>
+    </div>-->
+    <div id="toast" class="toast"></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> By TheDevilzz. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../scriptdropdown.js"></script>
+    <script src="script.js"></script>
+    
+    </script>
+</body>
+</html>

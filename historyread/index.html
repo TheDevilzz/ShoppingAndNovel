@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/browser@4">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/oderdetail/css/navbar.css">
+</head>
+<body>
+    <header class="header">
+        <div class="containers">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" style="display: none;" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div style="max-width: 1200px; position: relative;">
+                        <div class="user-dropdown" id="userDropdown">
+                            <div id="userDropdownContent">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <!-- 左侧内容区 -->
+            <div class="left-panel">
+                <!-- 标签页 -->
+                <div class="tabs">
+                    <div class="tab" data-tab="history">ประวัติการอ่าน</div>
+                </div>
+
+                <!-- 书籍列表 -->
+                <div class="book-list">
+                    <!-- 第一本书 -->
+                    <div class="book-item">
+                        <div class="book-cover">
+                            <img src="https://via.placeholder.com/100x140" alt="书籍封面">
+                            <span class="book-tag">热推</span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">重生金融危机横扫全球</h3>
+                            
+                            <div class="book-progress">书签：第101章 102个小语：你要买我的礼物，我迟来的救赎</div>
+                            <div class="book-update">更新：新书 从一千到一千亿只用一年</div>
+                        </div>
+                        <div class="book-actions">
+                            <div class="date">2021-11-12</div>
+                        </div>
+                    </div>
+
+                   
+            </div>
+        </div>
+    </div>
+    <script src="/scriptdropdown.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

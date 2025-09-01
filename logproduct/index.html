@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/showToast.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 onclick="home()" style="cursor: pointer;">Lestial V</h3>
+                <button class="toggle-sidebar" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">แดชบอร์ด</div>
+                <a href="../dashboard/" class="menu-item ">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ภาพรวม</span>
+                </a>
+                <div class="menu-category">ตำสั่งซื้อ</div>
+                <a href="../adminorders/" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>จัดการคำสั่งซื้อ</span>
+                </a>
+               <!-- <a href="#" class="menu-item">
+                    <i class="fas fa-ban"></i>
+                    <span>Canceled Orders</span>
+                </a>-->
+                <div class="menu-category">สินค้า</div>
+                <a href="../adminnovel/" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>จัดการนิยาย</span>
+                </a>
+                <a href="../adminpanel/" class="menu-item">
+                    <i class="fas fa-boxes"></i>
+                    <span>จัดการสินค้า</span>
+                </a>
+                <div class="menu-category">ผู้ใช้</div>
+                <a href="../AccessControl/" class="menu-item" >
+                    <i class="fas fa-users"></i>
+                    <span>จัดการผู้ใช้</span>
+                </a>
+                <a href="/logproduct/" class="menu-item active" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขสินค้า</span>
+                </a>
+                <a href="/logorders/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขคำสั่งซื้อ</span>
+                </a>
+                <div class="menu-category"></div>
+
+                <a href="#" onclick="logout()" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="user-profile">
+                       <!-- <img src="/api/placeholder/36/36" alt="Admin">
+                        <span>Admin</span>-->
+                    </div>
+                </div>
+            </div>
+            <div id="toast" class="toast"></div>
+            <!-- Content -->
+            <div class="content">
+                <h2 class="page-title">บันทึกการแก้ไขสินค้า</h2>
+                <div class="card">
+                    <div class="log-container">
+                        <h2>ประวัติการแก้ไขสินค้า</h2>
+                        <table id="logTable">
+                          <thead>
+                            <tr>
+                              <th>วันเวลา</th>
+                              <th>สินค้า</th>
+                              <th>ผู้แก้ไข</th>
+                              <th>ประเภท</th>
+                              <th>ข้อมูลเดิม</th>
+                              <th>ข้อมูลใหม่</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src ="/showToast.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 左侧面板样式 */
+.left-panel {
+    flex: 3;
+    border-right: 1px solid #eee;
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.tab {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    font-size: 16px;
+    user-select: none;
+}
+
+.tab.active {
+    color: #0a90e9;
+    font-weight: bold;
+}
+
+.tab-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #0a90e9;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+}
+
+/* 书籍列表样式 */
+.book-list {
+    padding: 15px;
+}
+
+.book-item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.book-cover {
+    position: relative;
+    margin-right: 15px;
+    width: 100px;
+}
+
+.book-cover img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.book-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff4d4f;
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-top-left-radius: 4px;
+}
+
+.book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.book-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.book-meta {
+    margin-bottom: 10px;
+}
+
+.book-meta span {
+    display: inline-block;
+    margin-right: 15px;
+    color: #999;
+    font-size: 14px;
+}
+
+.book-progress, .book-update {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.book-actions {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.date {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 5px 0;
+    width: 80px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.btn.read {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+.btn.delete {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+/* 右侧推荐栏样式 */
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.recommend-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recommend-list {
+    list-style: none;
+}
+
+.recommend-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.number {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: #666;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.number.hot {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+.title {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.download {
+    color: #0a90e9;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .book-item {
+        flex-direction: column;
+    }
+
+    .book-cover {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .book-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .btn {
+        margin-bottom: 0;
+    }
+}
