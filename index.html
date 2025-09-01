@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">  
+    <head>    
+        <meta charset="utf-8" />    
+        <title>Home Members Shop - Connect with LestialV on Social Media</title>    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+        <meta name="theme-color" content="#000000" />    
+        <meta name="description" content="Explore our home for exclusive member content, shop for unique merchandise, and dive into captivating stories. Stay connected with LestialV on Twitter, YouTube, and Facebook."    />    
+        <img alt="Logo" src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v=" style="width: 0px; height: 0px; display: none"/>    
+        <link rel="stylesheet" type="text/css" href="./css/index.css" />    <link rel="stylesheet" type="text/css" href="./css/font.css" />    
+        <link rel="stylesheet" type="text/css" href="./css/styles.css" />    <link rel="stylesheet" type="text/css" href="./css/components.css" />    
+        <link rel="stylesheet" type="text/css" href="./css/FrameOne.css" />  
+        <link rel="stylesheet" href="/oderdetail/css/navbar.css" />
+    </head>  
+    <body>    <!-- main content section -->    
+        <header class="header">
+            <img src="public/images/img_header_logo.svg" alt="Headerlogo" class="header__logo" />
+            <ul class="header__menu right-menu" id="mainMenu">
+                <li><a href="#"><h4 class="header__menu-item ui heading size-headings">หน้าแรก</h4></a></li>
+                <li><a href="./member/"><h4 class="header__menu-item ui heading size-headings">เมมเบอร์</h4></a></li>
+                <li><a href="./shop/"><h4 class="header__menu-item ui heading size-headings">ร้านค้า</h4></a></li>
+                <li><a href="/novel/"><h4 class="header__menu-item ui heading size-headings">นิยาย</h4></a></li>
+                <li><a href="/About/"><h4 class="header__menu-item ui heading size-headings">ติดต่อ</h4></a></li>
+              </ul>
+            <button class="header__menu-toggle" id="menuToggle" aria-label="เปิดเมนู">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+              
+              <ul class="header__menu left-menu" id="mainMenu1">
+                <li><h4 class="header__menu-item ui heading size-headings" onclick="login()" style="cursor: pointer;">เข้าสู่ระบบ</h4></li>
+              </ul>
+        </header>
+        <div class="columnsettings-one">      <!-- image gallery section -->      
+            <div class="stacksettings">        
+                <div class="row_three">          
+                    <img src="public/images/img_group.svg" alt="Image" class="frame-one__image" />          
+                    <div class="frame-one">            
+                        <img src="public/images/img_group_black_900.svg" alt="Image" class="frame-one__image-1" />            
+                        <div class="frame-one__sub-row">              
+
+                            <div class="frame-one__sub-row__nested-row">                
+                                <div class="flex-col-end-end frame-one__sub-row__nested-row__column">                  
+
+                                    <img src="public/images/img_group_white_a700.svg" alt="Image" class="frame-one__sub-row__nested-row__column__image"/>                
+                                </div>                
+                                <img src="public/images/img_group_54x140.svg" alt="Image" class="frame-one__sub-row__nested-row__image"/>
+                            </div>            
+                        </div>          
+                    </div>        
+                </div>        
+                <img src="public/images/img_group_black_900_16x232.svg" alt="Image" class="image__vector" />        
+                <div class="rowsettings">          
+                    <img src="public/images/img_group_white_a700_62x62.png" alt="Image" class="rowsettings__image" />          
+                    <img src="public/images/img_settings.svg" alt="Settings" class="rowsettings__settings" />        
+                </div>        <!-- navigation header section -->        
+                
+            </div> 
+            <div>        
+                <div class="row_four">               
+
+                </div>      
+            </div>      <!-- footer section -->      
+            <div>        
+                <footer class="footer">
+                    <div class="containers">
+                        <div class="footer-bottom">
+                            <p>&copy; <span id="currentYear"></span> By TheDevilzz. สงวนลิขสิทธิ์</p>
+                        </div>
+                    </div>
+                </footer>      
+            </div>    
+        </div>  
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script>
+        
+    let currentUser = null; // ตัวแปรสำหรับเก็บข้อมูลผู้ใช้ที่ล็อกอินอยู่
+    document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    const mainMenu1 = document.getElementById('mainMenu1');
+    menuToggle.addEventListener('click', function() {
+        mainMenu.style.display = mainMenu.style.display === 'block' ? 'none' : 'block';
+        mainMenu.style.paddingTop = 85 + 'px'; // เพิ่ม padding-top เป็น 25px
+        mainMenu.classList.toggle('open');
+        mainMenu1.style.display = mainMenu1.style.display === 'block' ? 'none' : 'block';
+        mainMenu1.classList.toggle('open');
+    });
+    // ปิดเมนูเมื่อคลิกลิงก์ (mobile)
+    mainMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainMenu.classList.remove('open');
+            mainMenu1.classList.remove('open');
+        });
+    });
+            const displayArea = document.querySelector('.row_four');
+            const apiUrl = 'https://lestialv.ddns.net:3001/api/links'; // URL ของ Backend API
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json(); // แปลงข้อมูลตอบกลับเป็น JSON
+                })
+                .then(data => {
+                    //console.log('Data received from API:', data);
+                    displayArea.innerHTML = ''; // ล้างข้อความ "กำลังโหลด..."
+
+                    if (data && data.length > 0) {
+                        data.forEach(item => {
+                            if (item.link) {
+                                // สร้าง div สำหรับแต่ละ embed link
+                                const linkContainer = document.createElement('div');
+                                linkContainer.classList.add('link-container'); // เพิ่ม class สำหรับ styling (ถ้าต้องการ)
+
+                                // *** สำคัญ: ใส่ HTML string จากฐานข้อมูลลงใน div ***
+                                linkContainer.innerHTML = item.link;
+
+                                // นำ div ที่สร้างไปต่อท้ายใน displayArea
+                                displayArea.appendChild(linkContainer);
+                            }
+                        });
+
+                        // *** สำคัญมาก: เรียกให้ Twitter Widgets ทำงานอีกครั้ง ***
+                        // หลังจากเพิ่ม HTML ลงใน DOM แล้ว ต้องเรียกฟังก์ชันนี้
+                        // เพื่อให้ Twitter ค้นหาและแสดงผล Embed ใหม่
+                        if (window.twttr && typeof window.twttr.widgets.load === 'function') {
+                            //console.log('Calling twttr.widgets.load()...');
+                            window.twttr.widgets.load(displayArea); // ระบุ element ที่ต้องการให้สแกนก็ได้
+                        } else {
+                            console.warn('Twitter widgets script (widgets.js) not loaded yet or twttr object not found.');
+                            // อาจจะต้องรอให้ script โหลดเสร็จก่อน
+                        }
+
+                    } else {
+                        displayArea.innerHTML = '<p>ไม่พบข้อมูลลิงก์</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching or processing data:', error);
+                    displayArea.innerHTML = `<p style="color: red;">เกิดข้อผิดพลาดในการโหลดข้อมูล: ${error.message}</p>`;
+                });
+
+    // --- Check login and update login button ---
+    
+    // ลองดึงจาก localStorage หรือ sessionStorage
+    const storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+    if (storedUser) {
+        try {
+            currentUser = JSON.parse(storedUser);
+        } catch (e) {
+            currentUser = null;
+        }
+    }
+    
+
+    const loginMenu = document.querySelector('.left-menu .header__menu-item');
+    if (currentUser && loginMenu) {
+        // สมมติ username อยู่ใน currentUser.username หรือ currentUser.name
+        loginMenu.textContent = currentUser.username || currentUser.name || "โปรไฟล์";
+        // ถ้าต้องการให้คลิกไปหน้าโปรไฟล์
+        loginMenu.parentElement.setAttribute('href', '/profiles/');
+    }
+});
+function login(){
+    if (currentUser) {
+        // ถ้ามีผู้ใช้ล็อกอินอยู่แล้ว ให้ไปที่หน้าโปรไฟล์
+        window.location.href = '/profiles/';
+    } else {
+        // ถ้ายังไม่มีผู้ใช้ล็อกอิน ให้ไปที่หน้าเข้าสู่ระบบ
+        window.location.href = '/login/';
+    }
+}
+    </script>
+    </body>
+    
+    </html>
