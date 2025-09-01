@@ -1,0 +1,24 @@
+:root {  
+    /*------Color variables------*/  
+    --black_900: #000000;  
+    --black_900_b2: #000000b2;  
+    --blue_a700: #0866ff;  
+    --blue_gray_100: #d9d9d9;  
+    --blue_gray_900: #13243d;  
+    --blue_gray_900_01: #17243c;  
+    --gray_400: #b1b1b1;  
+    --indigo_900: #0d0088;  
+    --red_a700: #ff0302;  
+    --white_a700: #ffffff;  
+    --white_a700_01: #fefefe;  
+    --white_a700_7f: #ffffff7f;  
+    /*------Spacing variables------*/  
+    --space-xs: 4px;
+}
+/*-------------------------------------  2. Utility CSS--------------------------------------*/
+.flex-col-end-end {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: flex-end;  
+    justify-content: flex-end;
+}

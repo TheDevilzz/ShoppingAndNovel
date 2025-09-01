@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Items</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/ShopOne.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/font.css"> 
+    <link rel="stylesheet" href="/showToast.css">
+</head>
+
+<body>
+    <div class="shop-one">
+            <div class="section">
+                <header class="header">
+                    <img src="public/images/img_header_logo.svg" alt="Headerlogo" class="header__logo" />
+                    <nav class="header__menu">
+                        <ul class="header__menu-list">
+                            <li><a href="../index.html"><h4 class="ui heading size-headingxs">หน้าแรก</h4></a></li>
+                            <li><a href="#"><h4 class="ui heading size-headingxs">เมมเบอร์</h4></a></li>
+                            <li><a href="../shop/"><h4 class="ui heading size-headingxs">ร้านค้า</h4></a></li>
+                            <li><a href="#"><h4 class="ui heading size-headingxs">นิยาย</h4></a></li>
+                            <li><a href="#"><h4 class="ui heading size-headingxs">ติดต่อ</h4></a></li>
+                        </ul>
+                    </nav>
+                    <div class="header__actions">
+                        <a href="../carts/"><button class="header__cart"><img src="public/images/img_cart.svg" /></button></a>
+                        <a onclick="checkroles()"><img src="public/images/img_lock.svg" alt="Lock" class="header__lock" /></a>
+                    </div>
+                </header>
+
+                <div class="section__content">
+                    <div class="content__details">
+                        <div class="details__images">
+                            
+                        </div>
+
+                        <div id="product-categories" class="content__grid">
+                            </div>
+                           
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="./shop.js">
+    </script>
+    <script src="/showToast.js"></script>
+</body>
+
+</html>

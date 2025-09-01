@@ -1,0 +1,319 @@
+.header__menu-item {  
+    color: var(--black_900_b2) !important;
+}
+
+.class-_one-link-2 {  
+    margin-top: 10px;
+}
+
+.columnsettings-one {
+    /* height: 2720px;  <--- ลบบรรทัดนี้ หรือใส่คอมเมนต์ */
+    background-image: url(../public/images/img_frame_one.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh; /* เพิ่ม: ทำให้คอนเทนเนอร์สูงเต็มหน้าจออย่างน้อย */
+    display: flex;       /* เพิ่ม: เตรียมพร้อมสำหรับการจัด layout */
+    flex-direction: column; /* เพิ่ม: จัดเรียง element ภายในแนวตั้ง */
+    /* Media query สำหรับ height: auto ยังคงใช้ได้ดี */
+    @media only screen and (max-width: 1440px) {
+      height: auto;
+    }
+    /* ไม่จำเป็นต้องซ้ำ media query นี้ */
+    /* @media only screen and (max-width: 1440px) {
+         height: auto;
+    } */
+  }
+
+.stacksettings {  
+    height: 1080px;  
+    background-color: aliceblue;  
+    background-size: cover;  
+    background-repeat: no-repeat;  
+    position: relative;  
+    opacity: 0.92;  
+    align-content: center;  
+    @media only screen and (max-width: 1440px) {    
+        height: auto;  
+    }  
+    @media only screen and (max-width: 1440px) {    
+        height: auto;  
+    }
+}
+
+.row_three {  
+    flex: 1;  
+    display: flex;  
+    justify-content: flex-end;  
+    align-items: flex-start;  
+    @media only screen and (max-width: 1440px) {    
+        flex-direction: column;  
+    }
+}
+
+.frame-one__image {  
+    height: 98px;  
+    margin-top: 196px;  
+    z-index: 2;  
+    width: 16%;  
+    position: relative;  
+    object-fit: contain;  
+    @media only screen and (max-width: 1440px) {    
+        width: 100%;  
+    } 
+}
+.frame-one {  
+    margin-left: -386px;  
+    align-self: center;  
+    position: relative;  
+    width: 85%;  
+    display: flex;  
+    justify-content: flex-end;  
+    align-items: center;  
+    @media only screen and (max-width: 1440px) {    
+        flex-direction: column;    
+        width: 100%;    
+        padding-left: 20px;    
+        padding-right: 20px;   
+        margin-left: 0px;  
+    }
+}
+.frame-one__image-1 {  
+    height: 360px;  
+    z-index: 1;  
+    width: 29%;  
+    position: relative;  
+    object-fit: contain;  
+    @media only screen and (max-width: 1440px) {    
+        width: 100%;  
+    }
+}
+.frame-one__sub-row {  
+    height: 1080px;  
+    margin-left: -332px;  
+    padding-left: 56px;  
+    padding-right: 56px;  
+    position: relative;  
+    background-image: url(../public/images/img_group_1.svg);  
+    background-size: cover;  
+    background-repeat: no-repeat;  
+    flex: 1;  display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+    }  
+    
+}
+.frame-one__sub-row__nested-row {  
+    width: 94%;  
+    display: flex;  
+    justify-content: flex-end;  
+    align-items: center;  
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+        width: 100%;  
+    }  
+    @media only screen and (max-width: 1440px) {    
+        flex-direction: column;    
+        width: 100%;  
+    }
+}
+.frame-one__sub-row__nested-row__column {  
+    height: 1080px;  
+    background-image: url(../public/images/img_group_2.png);  
+    background-size: cover;  
+    background-repeat: no-repeat;  
+    width: 66%;  
+    padding: 112px 130px 112px 56px;  
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+    }  
+    
+}
+
+.frame-one__sub-row__nested-row__column__image {  
+    height: 64px;  
+    margin-top: 788px;  
+    width: 16%;  
+    object-fit: contain;
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+    }
+}
+.frame-one__sub-row__nested-row__image {  
+    height: 54px;  
+    margin-bottom: 116px;  
+    margin-left: -98px;  
+    align-self: flex-end;  
+    position: relative;  
+    width: 8%;  
+    object-fit: contain;  
+    @media only screen and (max-width: 1440px) {    
+       display: none;
+    }
+}
+.image__vector {  
+    height: 16px;  
+    width: 14%;  
+    object-fit: contain;  
+    position: absolute;  
+    bottom: 25%;  
+    left: 12%;  
+    margin: auto;
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+     }
+}
+.rowsettings {  
+    display: flex;  
+    align-items: flex-start;  
+    position: absolute;  
+    bottom: 25%;  
+    right: 0px;  
+    left: 0px;  
+    margin-left: auto;  
+    margin-right: auto; 
+    max-width: 1456px;  
+    width: 100%;  
+    @media only screen and (max-width: 1440px) {    
+        padding-left: 20px;    
+        padding-right: 20px;  
+        display: none;
+    }  
+    @media only screen and (max-width: 1440px) {    
+        padding-left: 20px;    
+        padding-right: 20px;  
+    }
+}
+.rowsettings__image {  
+    height: 62px;  
+    align-self: center;  
+    width: 4%;  
+    object-fit: contain;
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+     }
+}
+.rowsettings__settings {  
+    height: 10px;  
+    margin-top: 14px;  
+    width: 5%;  
+    object-fit: contain;
+    @media only screen and (max-width: 1440px) {    
+        display: none;
+     }
+}
+.header {  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px 30px;
+}
+.left-menu {
+    margin-right: auto;
+  }
+  
+  .right-menu {
+    margin-right: 10px;
+    margin-left: auto;
+  }
+.row_four {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 200px; /* ปรับตามต้องการ */
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.header__menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.login-item {
+    margin-right: auto; /* ดันปุ่มอื่นให้ไปขวา */
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+  }
+  
+  .left-buttons button,
+  .right-buttons button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .left-buttons button:hover,
+  .right-buttons button:hover {
+    background-color: #45a049;
+  }
+  
+.header__menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+}
+.header__menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 4px auto;
+    background: #222;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+    .header__menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: -100vw;
+        background: #fff;
+        width: 70vw;
+        max-width: 320px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: right 0.3s;
+        z-index: 15;
+    }
+    .header__menu.open {
+        right: 0;
+    }
+    .header__menu-toggle {
+        display: flex;
+    }
+}

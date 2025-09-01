@@ -1,0 +1,269 @@
+.product-details {  
+    background-color: var(--greyscale_000);  
+    width: 100%;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: flex-start;  
+    gap: 20px;  
+    padding: 10px 16px;  
+    border-radius: var(--radius-sm);
+}
+
+.product-details__image {  
+    height: 228px;  
+    margin-top: 10px;  
+    margin-bottom: 32px;  
+    width: 40%;  
+    object-fit: contain;
+}
+
+.product-details__details {  
+    width: 50%;
+}
+
+.product-details__details-column {  
+    gap: var(--space-sm);  
+    display: flex;  
+    flex-direction: column;  
+    align-items: flex-start;  
+    @media only screen and (max-width: 1440px) {    
+        gap: 105px;  
+    }  @media only screen and (max-width: 1050px) {    
+        gap: 105px;  
+    }  @media only screen and (max-width: 550px) {    
+        gap: 70px;  
+    }
+}
+
+.product-details__details-row {  
+    align-self: stretch;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    gap: 20px;
+}
+
+.product-details__title {  
+    letter-spacing: 0.16px;  
+    align-self: flex-end;
+}
+
+.product-details__favorite {  
+    height: 38px;  
+    padding-left: var(--space-xs);  
+    padding-right: var(--space-xs);  
+    background-color: var(--greyscale_000);  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    width: 38px;  
+    border-radius: var(--radius-xs);  
+    border: 1px solid var(--indigo_50);
+}
+
+.product-details__price {  
+    letter-spacing: 0.16px;
+}
+/*-------------------------------------  2. Page CSS--------------------------------------*/
+
+.shop-one {  
+    background-color: var(--greyscale_000);  
+    width: 100%;
+}
+
+.layer1 {  
+    height: 1480px;  
+    margin-bottom: 328px;  
+    background-image: url(../public/images/img_layer_1.svg);  
+    background-size: cover;  
+    background-repeat: no-repeat;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    padding: 48px;  
+    @media only screen and (max-width: 1440px) {    
+        height: auto;  
+    }  @media only screen and (max-width: 1050px) {    
+        height: auto;    
+        padding: 20px;  
+    }  @media only screen and (max-width: 550px) {    
+        padding: 16px;  
+    }
+}
+
+.section {  
+    margin-top: 20px;  
+    gap: 112px;  
+    display: flex;  
+    width: 100%;  
+    flex-direction: column;  
+    max-width: 1728px;  
+    margin-left: auto;  
+    margin-right: auto;  
+    @media only screen and (max-width: 1440px) {    
+        gap: 112px;  
+    }  @media only screen and (max-width: 1050px) {    
+        gap: 84px;  
+    }  @media only screen and (max-width: 550px) {    
+        gap: 56px;  
+    }
+}
+
+.header {  
+    margin-right: 10px;  
+    display: flex;  
+    flex: 1;
+    justify-content: space-between;  
+    align-items: center;  
+    gap: 20px;  
+    @media only screen and (max-width: 1050px) {    
+        flex-direction: column;    
+        margin-right: 0px;  
+    }
+}
+
+.header__logo {  
+    height: 90px;  
+    width: 84px;  
+    object-fit: contain;
+}
+
+.header__menu {  
+    width: 100%;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    max-width: 1548px;  
+    margin-left: auto;  
+    margin-right: auto;  
+    gap: 20px;  
+    @media only screen and (max-width: 1440px) {    
+        padding-left: 20px;    
+        padding-right: 20px;  
+    }  @media only screen and (max-width: 1050px) {    
+        flex-direction: column;    
+        padding-left: 20px;    
+        padding-right: 20px;  
+    }
+}
+
+.header__menu-list {  
+    gap: 96px;  
+    display: flex;  
+    flex-wrap: wrap;  
+    @media only screen and (max-width: 1440px) {    
+        gap: 20px;  
+    }  @media only screen and (max-width: 1050px) {    
+        gap: 20px;  
+    }
+}
+
+.header__actions {  
+    gap: 16px;  
+    display: flex;  
+    align-items: center;
+}
+
+.header__cart {  
+    height: 60px;  
+    padding-left: var(--space-xs);  
+    padding-right: var(--space-xs);  
+    background-color: var(--greyscale_000);  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    width: 60px;  
+    border-radius: var(--radius-md);
+}
+
+.header__lock {  
+    height: 60px;  
+    width: 60px;  
+    object-fit: contain;
+}
+
+.section__content {  
+    margin-right: 10px;  
+    padding-left: 16px;  
+    padding-right: 16px;  
+    @media only screen and (max-width: 1050px) {    
+        margin-right: 0px;  
+    }
+}
+
+.content__details {  
+    display: flex;  
+    justify-content: center;  
+    align-items: flex-start;  
+    @media only screen and (max-width: 1050px) {    
+        flex-direction: column;  
+    }
+}
+
+.details__images {  
+    gap: 374px;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: flex-start;  
+    @media only screen and (max-width: 1440px) {    
+        gap: 280px;  
+    }  @media only screen and (max-width: 1050px) {    
+        gap: 280px;  
+    }  @media only screen and (max-width: 550px) {    
+        gap: 187px;  
+    }
+}
+
+.images__item--primary {  
+    height: 28px;  
+    width: 70%;  
+    object-fit: contain;
+}
+
+.images__item--secondary {  
+    height: 28px;  
+    width: 56%;  
+    object-fit: contain;
+}
+
+.images__item--tertiary {  
+    height: 22px;  
+    width: 52%;  
+    object-fit: contain;
+}
+
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h2 {
+    margin-bottom: 10px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.view-all-button { /* Existing styles, but important to keep */
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.view-all-button:hover {
+    background-color: #0056b3;
+}
+
+
+.h2{
+    color: gray;
+}
+

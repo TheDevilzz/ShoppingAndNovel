@@ -1,0 +1,36 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Text CSS
+2. Heading CSS
+==========================================*/
+/*-------------------------------------  
+1. Text CSS
+--------------------------------------*/
+
+.ui.text.size-textxs {  
+    font-size: 16px;  
+    font-weight: 400;  
+    @media only screen and (max-width: 1440px) {    
+        font-size: 13px;  
+    }
+}
+
+.ui.text {  
+    color: var(--black_900_01);  
+    font-family: IBM Plex Sans;
+}
+/*-------------------------------------  2. Heading CSS--------------------------------------*/
+
+.ui.heading.size-headingxs {  
+    font-size: 24px;  
+    font-weight: 600;  
+    @media only screen and (max-width: 1440px) {    
+        font-size: 20px;  
+    }  @media only screen and (max-width: 1050px) {    
+        font-size: 22px;  
+    }
+}
+
+.ui.heading {  
+    color: var(--black_900_b2);  
+    font-family: Inter;
+}

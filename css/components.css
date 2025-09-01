@@ -1,0 +1,36 @@
+.ui.text.size-textxs {  
+    font-size: 24px;  
+    font-weight: 400;  
+    @media only screen and (max-width: 1440px) {    
+        font-size: 20px;  
+    }  
+    @media only screen and (max-width: 1050px) {    
+        font-size: 22px;  
+    }
+}
+.ui.text {  
+    color: var(--black_900);  
+    font-family: Inter;
+}
+
+.ui.heading.size-headingxs {  
+    font-size: 16px;  
+    font-weight: 600;  
+    @media only screen and (max-width: 1440px) {    
+        font-size: 13px;  
+    }
+}
+.ui.heading.size-headings {  
+    font-size: 24px;  
+    font-weight: 600;  
+    @media only screen and (max-width: 1440px) {    
+        font-size: 20px;  
+    }  
+    @media only screen and (max-width: 1050px) {    
+        font-size: 22px;  
+    }
+}
+.ui.heading {  
+    color: var(--black_900);  
+    font-family: Inter;
+}

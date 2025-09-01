@@ -1,0 +1,19 @@
+:root {  
+    /*------Color variables------*/  
+    --black_900: #040509;  
+    --black_900_01: #000000;  
+    --black_900_b2: #000000b2;  
+    --blue_gray_900: #17243c;  
+    --gray_500: #9d9fa2;  
+    --gray_900: #231f20;  
+    --greyscale_000: #ffffff;  
+    --indigo_50: #e9e9f2;  
+    --indigo_50_01: #e8e6f0; 
+     /*------Border radius variables------*/  
+     --radius-xs: 18px;  
+     --radius-sm: 20px;  
+     --radius-md: 30px;  
+     /*------Spacing variables------*/  
+     --space-xs: 6px;  
+     --space-sm: 140px;
+}
