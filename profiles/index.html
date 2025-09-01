@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V - Dashboard</title>
+    <link rel="stylesheet" href="../profiles/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/browser@4">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="containers">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" style="display: none;" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div style="max-width: 1200px; position: relative;">
+                        <div class="user-dropdown" id="userDropdown">
+                            <div id="userDropdownContent">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">ข้อมูลส่วนตัว</h1>
+
+            <div class="coin-balance">
+                <div class="coin-info">
+                    <div class="coin-icon">C</div>
+                    <div>
+                        <div>ยอด Coin คงเหลือ</div>
+                        <div id="coins" class="coin-amount">0</div>
+                    </div>
+                </div>
+                <a href="../topup/">
+                <button class="add-coin-btn">+ coin</button>
+                 </a>
+            </div>
+
+            <div class="form-grid">
+                <label class="form-label">ไอดีผู้ใช้:</label>
+                <input type="text" class="form-input" id="username" value="ไอดีผู้ใช้งาน">
+                <div></div>
+
+                <label class="form-label">ชื่อ:</label>
+                <input type="text" class="form-input" id="name" value="">
+                <div></div>
+
+                <label class="form-label">นามสกุล:</label>
+                <input type="text" class="form-input" id="lastname" value="">
+                <div></div>
+
+                <label class="form-label">อีเมล:</label>
+                <input type="email" class="form-input" id="email" value="">
+                <div></div>
+
+
+                <label class="form-label">รหัสผ่าน:</label>
+                <a href="../Login/re-password/"><button  type="password" class="form-input" value="********" style="left: 0;" >********</button></a>
+                <div></div>
+            </div>
+            
+            <hr>
+
+           
+            <button class="save-btn" onClick="save()">บันทึก</button>
+
+        </div>
+        <div id="resetpassword" class="reset" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+            <div  class="form-container" style="top: 50%; left: 50%;" >
+                <h1>ใส่รหัสผ่านใหม่ของคุณ</h1>
+                
+                <form id="reset-password-form">
+                  <div class="form-group">
+                    <input type="password" id="old-password" placeholder="รหัสผ่านเก่า">
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="password" id="new-password" placeholder="รหัสผ่านใหม่">
+                  </div>
+                  
+                  <div class="button-group">
+                    <button type="submit">บันทึก</button>
+                    <a href="#" onclick="closepassword()">ยกเลิก</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+    </main>
+    <script src="./profile.js"></script>
+</body>
+</html>

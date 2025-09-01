@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้า - ThaiShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">ThaiShop</a>
+                <div class="nav-links">
+                    <a href="index.html">หน้าแรก</a>
+                    <a href="products.html" class="active">สินค้า</a>
+                    <a href="novels.html">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+                <div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div id="userDropdownContent">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-nav-links">
+                    <a href="index.html">หน้าแรก</a>
+                    <a href="products.html" class="active">สินค้า</a>
+                    <a href="novels.html">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li class="active" id="categoryTitle">สินค้าทั้งหมด</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Products List -->
+    <section class="products-list-section">
+        <div class="container">
+            <div class="products-header">
+                <h1 id="productsHeading">สินค้าทั้งหมด</h1>
+                <div class="products-filters">
+                    <div class="filter-group">
+                        <label for="sortBy">เรียงตาม:</label>
+                        <select id="sortBy" class="form-control">
+                            <option value="recommended">แนะนำ</option>
+                            <option value="priceLowHigh">ราคาต่ำ-สูง</option>
+                            <option value="priceHighLow">ราคาสูง-ต่ำ</option>
+                            <option value="newest">สินค้าใหม่</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-container">
+                <div class="products-sidebar">
+                    <div class="filter-section">
+                        <h3>หมวดหมู่</h3>
+                        <ul class="category-filter" id="categoryFilter">
+                            <!-- Will be filled by JavaScript -->
+                        </ul>
+                    </div>
+                    <div class="filter-section">
+                        <h3>ราคา</h3>
+                        <div class="price-range-filter">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="ต่ำสุด" class="form-control">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="สูงสุด" class="form-control">
+                            </div>
+                            <button id="applyPriceFilter" class="btn-primary btn-sm">กรอง</button>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h3>สถานะสินค้า</h3>
+                        <div class="checkbox-filter">
+                            <div class="form-check">
+                                <input type="checkbox" id="inStock" class="form-check-input" checked>
+                                <label for="inStock" class="form-check-label">มีสินค้า</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="preOrder" class="form-check-input" checked>
+                                <label for="preOrder" class="form-check-label">พรีออเดอร์</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="outOfStock" class="form-check-input">
+                                <label for="outOfStock" class="form-check-label">สินค้าหมด</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Will be filled by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ThaiShop</h3>
+                    <p>ร้านค้าออนไลน์คุณภาพสำหรับทุกความต้องการ</p>
+                </div>
+                <div class="footer-col">
+                    <h3>ช่วยเหลือ</h3>
+                    <a href="faq.html">คำถามที่พบบ่อย</a>
+                    <a href="shipping.html">การจัดส่ง</a>
+                    <a href="returns.html">การคืนสินค้า</a>
+                    <a href="contact.html">ติดต่อเรา</a>
+                </div>
+                <div class="footer-col">
+                    <h3>บัญชีของฉัน</h3>
+                    <a href="../profiles">โปรไฟล์</a>
+                    <a href="../carts">ประวัติการสั่งซื้อ</a>
+                    <a href="favorites.html">รายการโปรด</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> ThaiShop. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V - Shopping Cart</title>
+    <link rel="stylesheet" href="../carts/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                   <!-- 
+                    </button>-->
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" style="display: none;" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div style="max-width: 1200px; position: relative;">
+                        <div class="user-dropdown" id="userDropdown">
+                            <div id="userDropdownContent">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">ตะกร้าสินค้าของคุณ</h1>
+
+        <div class="cart-grid">
+            <div class="cart-items-section">
+                <div class="cart-items" id="cart-items">
+                </div>
+                
+                <div class="shipping-form">
+                    <div class="form-section">
+                        <h2 class="section-title">ที่อยู่จัดส่ง</h2>
+                        <div class="address-selection" id="addressContainer">
+                            </div>
+                        <button class="btn btn-outline btn-new-address" id="btn-add-address">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            เพิ่มที่อยู่ใหม่
+                        </button>
+                    </div>
+                    <form class="form-grid" id="new-address-form" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">ชื่อ</label>
+                                <input type="text" id="first-name" name="first-name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">นามสกุล</label>
+                                <input type="text" id="last-name" name="last-name" class="form-input" required>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label class="form-label">อีเมล</label> <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label class="form-label">หมายเลขโทรศัพท์</label>
+                            <div class="phone-input">
+                                <input type="tel" id="phone" name="phone" class="form-input" pattern="[0-9]{9,10}" required title="กรอกหมายเลขโทรศัพท์ 9-10 หลัก">
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label class="form-label">ที่อยู่ (บ้านเลขที่, หมู่, ถนน)</label>
+                            <input type="text" id="address" name="address" class="form-input" required>
+                        </div>
+                
+                        <div class="address-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="province">จังหวัด</label>
+                                <select id="province" name="province" class="form-input" required>
+                                    <option value="">-- เลือกจังหวัด --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="district">อำเภอ/เขต</label>
+                                <select id="district" name="district" class="form-input" required disabled>
+                                    <option value="">-- เลือกอำเภอ/เขต --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="sub_district">ตำบล/แขวง</label>
+                                <select id="sub_district" name="sub_district" class="form-input" required disabled>
+                                    <option value="">-- เลือกตำบล/แขวง --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="postal">รหัสไปรษณีย์</label>
+                                <input type="text" id="postal" name="postal" class="form-input" required readonly>
+                            </div>
+                        </div>
+                         <button type="button" class="w-full mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" id="submit-button">
+                            บันทึกที่อยู่
+                        </button>
+                         <button type="button" class="w-full mt-2 py-2 px-4 bg-gray-300 text-gray-700 font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75" id="cancel-add-address">
+                             ยกเลิก
+                         </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <h2 class="payment-title">วิธีการชำระเงิน</h2>
+                
+                <div class="payment-option">
+                    <label for="payment-method">เลือกช่องทางการชำระเงิน:</label>
+                    <select id="payment-method" class="form-input">
+                        <option value="coins">ชำระด้วย Coins</option>
+                        <option value="promptpay">ชำระผ่านพร้อมเพย์</option>
+                        <option  value="coins_and_promptpay">ชำระผ่านพร้อมเพย์และ Coins</option>
+                    </select>
+                </div>
+                <div class="Coinshow"></div>
+                    <p style="color: darkgrey; font-size: 12px;">*หมายเหตุ ส่งฟรีทุกคำสั่งซื้อ</p>
+                <div class="total-section">
+                    <div class="total-row" id="productPrice" style="display: none;">
+                        <span>ราคาสินค้า</span>
+                        <div id="total1">100</div>
+                        <span>บาท.</span>
+                    </div>
+                    <div class="total-row" id="UserCoin" style="display: none;">
+                        <span>coins ที่มีอยู่</span>
+                        <div id="total2">100</div>
+                        <span>บาท.</span>
+                    </div>
+
+                    <div class="total-row">
+                        <span>รวมราคาสินค้า</span>
+                        <div id="total">100</div>
+                        <span>บาท.</span>
+                    </div>
+                </div>
+
+              <!--  <div class="terms">
+                    <input type="checkbox" id="terms">
+                    <label for="terms" style="font-size: 0.875rem;">
+                        ฉันได้อ่านและยอมรับ นโยบายการจัดส่ง และ นโยบายการคืนเงิน
+                    </label>
+                </div>-->
+
+                <button class="submit-button">ชำระเงิน</button>
+            </div>
+        </div>
+        <div id="toast" class="toast"></div>
+    </div>
+    <script src="./script.js">
+    </script>
+</body>
+</html>

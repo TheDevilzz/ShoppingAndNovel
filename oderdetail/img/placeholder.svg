@@ -1,0 +1,8 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#f1f5f9"/>
+  <text x="100" y="100" font-family="sans-serif" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="#64748b">ไม่พบรูปภาพ</text>
+  <path d="M80 60 L120 60 L120 80 L80 80 Z" fill="#94a3b8"/>
+  <path d="M65 120 L135 120 L135 130 L65 130 Z" fill="#94a3b8"/>
+  <path d="M75 140 L125 140 L125 150 L75 150 Z" fill="#94a3b8"/>
+</svg>

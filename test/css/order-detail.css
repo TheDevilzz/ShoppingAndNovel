@@ -1,0 +1,141 @@
+
+/* Order Detail Page Styles */
+.order-detail-page {
+  padding-bottom: 3rem;
+}
+
+/* Order Status */
+.order-status {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.status-badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.status-badge.completed {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.status-badge.shipping {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--info-color);
+}
+
+.status-badge.processing {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+.status-info {
+  font-size: 0.875rem;
+  color: var(--text-light-color);
+}
+
+.status-info p {
+  margin-bottom: 0.25rem;
+}
+
+/* Order Section */
+.order-section {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Product List */
+.product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.product-card:last-child {
+  border-bottom: none;
+}
+
+/* Address Card */
+.address-card {
+  background-color: #f8fafc;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.address-name {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.address-phone {
+  font-size: 0.875rem;
+  color: var(--text-light-color);
+  margin-bottom: 0.25rem;
+}
+
+.address-full {
+  font-size: 0.875rem;
+}
+
+/* Order Summary */
+.order-summary {
+  background-color: #f8fafc;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.summary-item.discount {
+  color: var(--success-color);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+/* Order Actions */
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .order-actions button {
+    width: 100%;
+  }
+}

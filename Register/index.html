@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - ThaiShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/">หน้าแรก</a>
+                    <a href="/shop/">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-nav-links">
+                    <a href="/">หน้าแรก</a>
+                    <a href="/shop/">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="/About/">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Form -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form-container">
+                    <h2>สมัครสมาชิก</h2>
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="username" class="form-label">ชื่อผู้ใช้ <span class="text-danger">*</span></label>
+                            <input type="text" id="username" class="form-control" required>
+                            <div class="invalid-feedback" id="usernameError"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">ชื่อ <span class="text-danger">*</span></label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="form-label">นามสกุล <span class="text-danger">*</span></label>
+                                <input type="text" id="lastname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">อีเมล <span class="text-danger">*</span></label>
+                            <input type="email" id="email" class="form-control" required>
+                            <div class="invalid-feedback" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">รหัสผ่าน <span class="text-danger">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="password" min="8" class="form-control" required>
+                                <button type="button" class="password-toggle" id="passwordToggle">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="strength-meter">
+                                    <div class="strength-meter-fill" id="strengthMeter"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText">ความปลอดภัยของรหัสผ่าน</div>
+                            </div>
+                            <ul class="password-requirements">
+                                <li id="length">ต้องมีความยาวอย่างน้อย 8 ตัวอักษร</li>
+                                <li id="lowercase">มีตัวพิมพ์เล็กอย่างน้อย 1 ตัว</li>
+                                <li id="uppercase">มีตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว</li>
+                                <li id="number">มีตัวเลขอย่างน้อย 1 ตัว</li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">ยืนยันรหัสผ่าน <span class="text-danger">*</span></label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="confirmPassword" min="8" class="form-control" required>
+                                <button type="button" class="password-toggle" id="confirmPasswordToggle" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback" id="confirmPasswordError"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="terms" class="form-check-input" required>
+                                <label for="terms" class="form-check-label">ฉันยอมรับ <a href="terms.html" class="text-primary">เงื่อนไขการใช้งาน</a> และ <a href="privacy.html" class="text-primary">นโยบายความเป็นส่วนตัว</a></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn-primary btn-block">สมัครสมาชิก</button>
+                        </div>
+                    </form>
+                    <div class="auth-links">
+                        <p>มีบัญชีอยู่แล้ว? <a href="/login" class="text-primary">เข้าสู่ระบบ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> TheDevilzz. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="register.js"></script>
+</body>
+</html>

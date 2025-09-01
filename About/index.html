@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับเรา</title>
+    <link rel="stylesheet" href="/orders/css/navbar.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="header">
+        <div class="containers">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop">สินค้า</a>
+                    <a href="/novel/" >นิยาย</a>
+                    <a href="/About/" class="active">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div id="userDropdownContent">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+               <!-- <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop" >สินค้า</a>
+                    <a href="/novel/" class="active">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+        <section class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">ข้อมูล</h2>
+            <p class="text-gray-700 leading-relaxed">
+                ยินดีต้อนรับสู่หน้าเกี่ยวกับเรา! เราคือทีมงานที่มุ่งมั่นในการสร้างสรรค์และพัฒนาสิ่งใหม่ ๆ เพื่อให้บริการที่ดีที่สุดแก่คุณ
+            </p>
+        </section>
+
+        <section class="bg-white shadow-md rounded-lg p-6 mt-6">
+            <h2 class="text-2xl font-semibold mb-4">ติดต่อ</h2>
+            <p class="text-gray-700 leading-relaxed">
+                <strong>ติดต่องาน และ คอลแลป:</strong> X DM : <a href="https://twitter.com/LNxLestialV" class="text-blue-500 hover:underline">@LNxLestialV</a><br>
+                <strong>Email:</strong> <a href="mailto:lestialv.official@gmail.com" class="text-blue-500 hover:underline">lestialv.official@gmail.com</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> By TheDevilzz. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/scriptdropdown.js"></script>
+</body>
+</html>

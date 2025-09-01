@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รถเข็นของฉัน - Comfy Shop</title>
+  <meta name="description" content="รถเข็นของฉัน - Comfy Shop">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/purchase.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="logo">Lestial V</a>
+            <div class="nav-links">
+                <a href="/" >หน้าแรก</a>
+                <a href="/shop">สินค้า</a>
+                <a href="/novel/">นิยาย</a>
+                <a href="/About/">เกี่ยวกับเรา</a>
+            </div>
+            <!--<div class="search-container">
+                <form id="searchForm">
+                    <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>-->
+            <div class="nav-actions">
+                <button id="favoritesBtn" class="icon-btn">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="favCount">0</span>
+                </button>
+                <button id="cartBtn" class="icon-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" style="display: none;" id="cartCount">0</span>
+                </button>
+                <button id="userBtn" class="icon-btn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div style="max-width: 1200px; position: relative;">
+                    <div class="user-dropdown" id="userDropdown">
+                        <div id="userDropdownContent">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-search">
+                <form id="mobileSearchForm">
+                    <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="/" >หน้าแรก</a>
+                <a href="/shop">สินค้า</a>
+                <a href="/novel/">นิยาย</a>
+                <a href="/About/">เกี่ยวกับเรา</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">คำสั่งซื้อของฉัน</h1>
+    </div>
+  </div>
+
+  <main class="purchase-page">
+    <div class="container">
+      <!-- Shop Group 1 -->
+      <div class="purchase-group">
+        <div class="product-card show-shop">
+          <div class="shop-info">
+            <div class="shop-name">รหัสคำสั่งซื้อ</div>
+            <div class="shop-badge">รหัสไปรษญี</div>
+            <div class="shop-link">ชื่อขนส่ง</div>
+          </div>
+          
+          <div class="product-info">
+            <div class="product-image">
+              <img src="" alt="บีไพล์ ครีมอาบน้ำกระชับผิว" onerror="this.src=''">
+            </div>
+            
+            <div class="product-details">
+              <h3 class="product-name">ชื่อสินค้า.</h3>
+              <div class="product-variant">รายละเอียดสินค้า</div>
+              <div class="product-quantity">จำนวน</div>
+            </div>
+            
+            <div class="product-price">
+              <div class="price-info">
+                <span class="current-price">฿47</span>
+              </div>
+              <div class="delivery-status">
+                <!--<div class="status-success">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>พัสดุถูกจัดส่งสำเร็จแล้ว</span>
+                </div>-->
+                <span class="status-text">สถานะคำสั่งซื้อ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="purchase-summary">
+          <div class="total-price">
+            <span>ราคารวมสั่งซื้อ:</span>
+            <span class="price">฿47</span>
+          </div>
+          
+          <!--<div class="action-buttons">
+            <button class="btn btn-outline">ติดต่อผู้ขาย</button>
+            <button class="btn btn-primary">ซื้ออีกครั้ง</button>
+          </div>-->
+        </div>
+      </div>
+
+      <!-- Shop Group 2 -->
+    <!--  <div class="purchase-group">
+        <div class="product-card show-shop">
+          <div class="shop-info">
+            <div class="shop-name">Sea Mermaid มี เมอร์เมด</div>
+            <div class="shop-badge">ขนส่ง</div>
+            <div class="shop-link">ดูร้านค้า</div>
+          </div>
+          
+          <div class="product-info">
+            <div class="product-image">
+              <img src="img/product2.png" alt="โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด 800 มล. กลิ่น Violet" onerror="this.src='img/placeholder.svg'">
+            </div>
+            
+            <div class="product-details">
+              <h3 class="product-name">โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด 800 มล. กลิ่น Violet</h3>
+              <div class="product-variant">ตัวเลือกสินค้า: V800</div>
+              <div class="product-quantity">x1</div>
+            </div>
+            
+            <div class="product-price">
+              <div class="price-info">
+                <span class="original-price">฿33</span>
+                <span class="current-price">฿25</span>
+              </div>
+              <div class="delivery-status">
+                <div class="status-success">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>พัสดุถูกจัดส่งสำเร็จแล้ว</span>
+                </div>
+                <span class="status-text">สำเร็จแล้ว</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-info">
+            <div class="product-image">
+              <img src="img/product3.png" alt="โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด ซอง 800 มล. กลิ่น Pink Floral" onerror="this.src='img/placeholder.svg'">
+            </div>
+            
+            <div class="product-details">
+              <h3 class="product-name">โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด ซอง 800 มล. กลิ่น Pink Floral ทำความสะอาดผ้า หอม คุณค่ำ Clean ชีวิตคราม</h3>
+              <div class="product-variant">ตัวเลือกสินค้า: PF800</div>
+              <div class="product-quantity">x1</div>
+            </div>
+            
+            <div class="product-price">
+              <div class="price-info">
+                <span class="original-price">฿33</span>
+                <span class="current-price">฿25</span>
+              </div>
+              <div class="delivery-status">
+                <div class="status-success">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>พัสดุถูกจัดส่งสำเร็จแล้ว</span>
+                </div>
+                <span class="status-text">สำเร็จแล้ว</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="purchase-summary">
+          <div class="total-price">
+            <span>ราคารวมสั่งซื้อ:</span>
+            <span class="price">฿50</span>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn btn-outline">ติดต่อผู้ขาย</button>
+            <button class="btn btn-primary">ซื้ออีกครั้ง</button>
+          </div>
+        </div>
+      </div>-->
+
+    
+    </div>
+  </main>
+
+  <script src="js/purchase.js"></script>
+</body>
+</html>

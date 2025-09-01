@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js">
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/showToast.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+    <div class="dashboard">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="cursor: pointer;" onclick="home()">Lestial V</h3>
+                <button class="toggle-sidebar" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">แดชบอร์ด</div>
+                <a href="../dashboard/" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ภาพรวม</span>
+                </a>
+                <div class="menu-category">ตำสั่งซื้อ</div>
+                <a href="../adminorders/" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>จัดการคำสั่งซื้อ</span>
+                    <span class="notify-badge" id="orderNotify" style="display:none;position:absolute;top:8px;right:8px;background:#e53e3e;color:#fff;font-size:0.8rem;padding:2px 8px;border-radius:999px;z-index:2;"></span>
+                </a>
+               <!-- <a href="#" class="menu-item">
+                    <i class="fas fa-ban"></i>
+                    <span>Canceled Orders</span>
+                </a>-->
+                <div class="menu-category">สินค้า</div>
+                <a href="../adminnovel/" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>จัดการนิยาย</span>
+                </a>
+                <a href="../adminpanel/" class="menu-item active">
+                    <i class="fas fa-boxes"></i>
+                    <span>จัดการสินค้า</span>
+                </a>
+                <div class="menu-category">ผู้ใช้</div>
+                <a href="../AccessControl/" class="menu-item" >
+                    <i class="fas fa-users"></i>
+                    <span>จัดการผู้ใช้</span>
+                </a>
+                <a href="/logproduct/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขสินค้า</span>
+                </a>
+                <a href="/logorders/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขคำสั่งซื้อ</span>
+                </a>
+                <div class="menu-category"></div>
+
+                <a href="#" onclick="logout()" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+    <!--<aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>LESTIAL V</h1>
+        </div>
+        <div class="sidebar-content">
+        <div class="nav-section">
+            <a href="../" class="nav-link">
+                <i class='bx bxs-home'></i>
+                 <span>หน้าแรก</span>
+             </a>
+            <a href="#" class="nav-link">
+               <i class='bx bxs-dashboard'></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-link active">
+                <i class='bx bxs-box'></i>
+                <span>สินค้า</span>
+            </a>
+            <a href="../adminorders/" class="nav-link">
+                <i class='bx bxs-cart'></i>
+                <span>คำสั่งซื้อ</span>
+            </a>
+            
+            Additional navigation items -->
+        <!--</div>
+        <div class="nav-section">
+            <div class="section-label">นิยาย</div>
+            <a href="../AdminNovel/" class="nav-link">
+                <i class='bx bxs-shield'></i>
+                <span>นิยาย</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="section-label">ผู้ดูแลระบบ</div>
+            <a href="../AccessControl/" class="nav-link">
+                <i class='bx bxs-shield'></i>
+                <span>จัดการผู้ใช้</span>
+            </a>
+        </div>
+       
+        </div>
+
+
+        
+        
+        <div class="sidebar-footer">
+            <a href="#" onclick="logout()" class="nav-link">
+                <i class='bx bx-log-out'></i>
+                <span>Log out</span>
+            </a>
+        </div>
+    </aside>-->
+
+        
+            
+
+    <main class="main-content">
+        <div class="header">
+            <button class="toggle-sidebar" id="toggle-sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-right">
+                <div class="user-profile">
+            </div>
+            </div>
+        </div>
+    
+        <div class="content-card">
+            <h1 class="page-title">จัดการสินค้า</h1>
+            
+            <div class="toolbar">
+                <input type="search" class="search-input" placeholder="ค้นหาสินค้า">
+                <button class="button" onclick="deleteProducts()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    ลบสินค้า
+                </button>
+                <button class="button primary" id="addProductButton">
+                    <i class='bx bx-plus'></i>
+                    เพิ่มสินค้า
+                </button>
+                <div id="addProductModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+                    <div class="containers" style="background: white; padding: 2rem; border-radius: 12px; max-width: 600px;">
+                        <h1>เพิ่มสินค้า</h1>
+                        <form id="addProductForm" class="addProductForm">
+                            <div class="form-grid">
+                                <div class="image-upload">
+                                    <input type="file" accept="image/*" id="productImage" required>
+                                    <img class="image-preview" id="previewImage" alt="Product preview" style="display: none; max-width: 100px; margin-top: 10px;">
+                                    <span>เลือกรูป</span>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="productName">ชื่อสินค้า</label>
+                                        <input type="text" id="productName" placeholder="ชื่อสินค้า">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">ราคา</label>
+                                        <input type="number" id="price" min="0" placeholder="ราคา">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="quantity">จำนวน</label>
+                                        <input type="number" id="quantity" min="0" placeholder="จำนวน">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">หมวดหมู่</label>
+                                        <select id="category">
+                                            <option value="Novel">Novel</option>
+                                            <option value="KeyChain">KeyChain</option>
+                                            <option value="Standee">Standee</option>
+                                            <option value="T-shirt">T-shirt</option>
+                                            <option value="VoicePack">VoicePack</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">สถานะสินค้า</label>
+                                        <select id="status">
+                                            <option value="pre-order">Pre-order</option>
+                                            <option value="in-stock">In Stock</option>
+                                            <option value="out-of-stock">Out of Stock</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="details">รายละเอียด</label>
+                                <textarea id="details" placeholder="รายละเอียด"></textarea>
+                            </div>
+                            <div class="form-footer">
+                                <button type="button" class="secondary" id="closeModal">ยกเลิก</button>
+                                <button type="submit" class="primary">บันทึก</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="editProductModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+                <div class="containers" style="background: white; padding: 2rem; border-radius: 12px; max-width: 600px;">
+                    <div id="editProductId"></div>
+                    <h1>แก้ไขสินค้า</h1>
+                    <form id="editProductForm" class="addProductForm">
+                        <div class="form-grid">
+                            <div class="image-upload">
+                                <input type="file" accept="image/*" id="editProductImage">
+                                <img class="image-preview" id="editPreviewImage" alt="Product preview" style="display: none; max-width: 100px; margin-top: 10px;">
+                                <span>เลือกรูป</span>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="productName">ชื่อสินค้า</label>
+                                    <input type="text" id="editProductName" placeholder="ชื่อสินค้า">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">ราคา</label>
+                                    <input type="number" id="editPrice" min="0" placeholder="ราคา">
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">จำนวน</label>
+                                    <input type="number" id="editQuantity" min="0" placeholder="จำนวน">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">หมวดหมู่</label>
+                                    <select id="editCategory">
+                                        <option value="Novel">Novel</option>
+                                        <option value="KeyChain">KeyChain</option>
+                                        <option value="Standee">Standee</option>
+                                        <option value="T-shirt">T-shirt</option>
+                                        <option value="VoicePack">VoicePack</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">สถานะสินค้า</label>
+                                    <select id="editStatus">
+                                        <option value="pre-order">Pre-order</option>
+                                        <option value="in-stock">In Stock</option>
+                                        <option value="out-of-stock">Out of Stock</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="details">รายละเอียด</label>
+                            <textarea id="editDetails" placeholder="รายละเอียด"></textarea>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="secondary" id="editCloseModal">ยกเลิก</button>
+                            <button type="submit" class="primary">บันทึก</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <table class="product-table" id="productTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" class="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll(this)"></th>
+                        <th>ID</th>
+                        <th>ชื่อสินค้า</th>
+                        <th>หมวดหมู่</th>
+                        <th>สถานะสินค้า</th>
+                        <th>ราคา</th>
+                        <th>จำนวน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+            
+        </div>
+    </main>
+</div>
+<script src="/notify.js"></script>
+<script src="/showToast.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

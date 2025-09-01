@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายละเอียดคำสั่งซื้อ - Comfy Shop</title>
+  <meta name="description" content="รายละเอียดคำสั่งซื้อ - Comfy Shop">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/order-detail.css">
+  <link rel="stylesheet" href="/showToast.css">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="#" onclick="history.back()" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        กลับไปหน้าคำสั่งซื้อ
+      </a>
+      <h1 class="page-title">รายละเอียดคำสั่งซื้อ #12345</h1>
+    </div>
+  </div>
+
+  <main class="order-detail-page">
+    <div class="container">
+      <div class="order-status">
+        <div class="status-badge completed">สำเร็จแล้ว</div>
+        <div class="status-info">
+          <p>วันเวลาที่สั่งซื้อ: 23 เม.ย. 2023, 14:30 น.</p>
+        </div>
+      </div>
+
+      <div class="order-section">
+        <h2 class="section-title">รายการสินค้า</h2>
+        
+        <div class="product-list">
+          <div class="product-card">
+            <div class="shop-info">
+              <div class="shop-name">Supersave_store</div>
+            </div>
+            
+            <div class="product-info">
+              <div class="product-image">
+                <img src="img/product1.png" alt="บีไพล์ ครีมอาบน้ำกระชับผิว" onerror="this.src='img/placeholder.svg'">
+              </div>
+              
+              <div class="product-details">
+                <h3 class="product-name">บีไพล์ ครีมอาบน้ำกระชับผิว**ดูเป็น 400มล.</h3>
+                <div class="product-variant">ตัวเลือกสินค้า: Cherry Berry Purify</div>
+                <div class="product-quantity">x1</div>
+              </div>
+              
+              <div class="product-price">
+                <span class="current-price">฿47</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-card">
+            <div class="shop-info">
+              <div class="shop-name">Sea Mermaid มี เมอร์เมด</div>
+            </div>
+            
+            <div class="product-info">
+              <div class="product-image">
+                <img src="img/product2.png" alt="โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด" onerror="this.src='img/placeholder.svg'">
+              </div>
+              
+              <div class="product-details">
+                <h3 class="product-name">โฟม! Sea Mermaid น้ำยาซักผ้าเมอร์เมด 800 มล. กลิ่น Violet</h3>
+                <div class="product-variant">ตัวเลือกสินค้า: V800</div>
+                <div class="product-quantity">x2</div>
+              </div>
+              
+              <div class="product-price">
+                <span class="current-price">฿50</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-section">
+        <h2 class="section-title">ที่อยู่จัดส่ง</h2>
+        
+        <div class="address-card">
+          <div class="address-name">คุณ นภัสสร รักการช้อป</div>
+          <div class="address-phone">098-765-4321</div>
+          <div class="address-full">123/45 หมู่บ้านสุขสบาย ถนนพระราม 9 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310</div>
+        </div>
+      </div>
+
+      <div class="order-section">
+        <h2 class="section-title">สรุปคำสั่งซื้อ</h2>
+        
+        <div class="order-summary">
+          <div class="summary-item">
+            <span>ราคาสินค้าทั้งหมด</span>
+            <span>฿97</span>
+          </div>
+          <div class="summary-total">
+            <span>ยอดรวมทั้งสิ้น</span>
+            <span>฿102</span>
+          </div>
+        </div>
+        <div style="display: grid; padding: 10px;">
+          <p style="padding: 10px; margin-top: 10px;">เลขพัสดุ</p>
+          <input style="padding: 10px; margin-top: 5px;" placeholder="กรุณาใส่เลขพัสดุ" id="trackingInput">
+          <p style="padding: 10px; margin-top: 10px;">สถานะคำสั่งซื้อ</p>
+          <select style="padding: 10px; margin-top: 5px;" id="statusSelect">
+            <option value="พนักงานรับคำสั่งซื้อ">พนักงานรับคำสั่งซื้อ</option>
+            <option value="พนักงานจัดส่ง">พนักงานจัดส่ง</option>
+          </select>
+        </div>
+      
+      </div>
+      <div class="order-actions">
+        <button class="btn btn-outline" onclick="history.back()">ยกเลิก</button>
+        <button class="btn btn-primary" onclick="submitOrderUpdate()">ยืนยัน</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="/showToast.js"></script>
+  <script src="js/order-detail.js"></script>
+</body>
+</html>

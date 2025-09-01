@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V Official Store</title>
+    <link rel="stylesheet" href="../orders/css/navbar.css">
+    <style src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/browser@4">
+    <link rel="stylesheet" href="/showToast.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation */
+        
+
+        /* Hero Banner */
+        .hero {
+            height: 300px;
+            background: linear-gradient(to bottom, #1a0b2e, #2b0b3a);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .product-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+        }
+
+        .product-info h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .quantity-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            background: none;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #f9c700;
+            color: black;
+        }
+
+        .btn-secondary {
+            background-color: #ff9500;
+            color: black;
+        }
+
+        /* Related Products */
+        .related-products {
+            margin-top: 3rem;
+        }
+
+        .related-products h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .product-card-info {
+            padding: 1rem;
+        }
+        @media (max-width: 768px) {
+
+
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #1a0b2e;">
+    <header class="header">
+        <div class="containers">
+            <nav class="nav">
+                <a href="/" class="logo">Lestial V</a>
+                <div class="nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop" class="active">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+                <!--<div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>-->
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div style="max-width: 1200px; position: relative;">
+                        <div class="user-dropdown" id="userDropdown">
+                            <div id="userDropdownContent">
+                                <!-- Will be filled by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-nav-links">
+                    <a href="/" >หน้าแรก</a>
+                    <a href="/shop" class="active">สินค้า</a>
+                    <a href="/novel/">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Lestial V</h1>
+            <p>OFFICIAL STORE</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-section">
+            <div class="product-image-container">
+                <img src="/placeholder.svg?height=500&width=500" alt="Acrylic Keychain" class="product-image">
+            </div>
+            <div class="product-info">
+                <H1 class = "name">[PRE-ORDER]Acrylic Keychain</h1>
+                <p class = "description" style="padding-top: 25px;">(size 4 cm.) พิเศษ 89. บาท / ชิ้น</p>
+                <p class="quantity" style="color: #888;padding-top: 25px;">จำนวนสินค้า</p>
+                <div class="product-price">ราคา 89 THB</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="cta-buttons" style="padding-top: 200px;">
+                    <button class="btn btn-primary" id = "addToCart">เพิ่มลงในตะกร้าสินค้า</button>
+                </div>
+            </div>
+        </div>
+
+       <!-- <div class="related-products">
+            <h2>สินค้าอื่นๆ</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Related Product 1">
+                    <div class="product-card-info">
+                        <p>Product Title</p>
+                        <p>499 THB</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Related Product 2">
+                    <div class="product-card-info">
+                        <p>Product Title</p>
+                        <p>499 THB</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="/placeholder.svg?height=300&width=300" alt="Related Product 3">
+                    <div class="product-card-info">
+                        <p>Product Title</p>
+                        <p>499 THB</p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <div id="toast" class="toast"></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> By TheDevilzz. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../scriptdropdown.js"></script>
+<script src="/showToast.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    //console.log("Product ID:", productId); 
+
+    const quantityInput = document.querySelector('.quantity-input');
+    const decreaseBtn = document.querySelector('.quantity-btn:first-child');
+    const increaseBtn = document.querySelector('.quantity-btn:last-child');
+    const addToCartBtn = document.getElementById('addToCart');
+
+    let currentProduct = null;
+
+    decreaseBtn.addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+            validateQuantity();
+        }
+    });
+
+    increaseBtn.addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+        validateQuantity();
+    });
+
+    quantityInput.addEventListener('input', () => {
+        validateQuantity();
+    });
+
+    function validateQuantity() {
+        const quantity = parseInt(quantityInput.value);
+        if (!currentProduct) return;
+
+        if (
+            currentProduct.Product_status !== "pre-order" &&
+  (quantity > currentProduct.Product_count || quantity <= 0 || isNaN(quantity))
+) {
+  addToCartBtn.disabled = true;
+  addToCartBtn.style.backgroundColor = 'gray';
+  addToCartBtn.style.cursor = 'not-allowed';
+} else {
+  addToCartBtn.disabled = false;
+  addToCartBtn.style.backgroundColor = ''; // กลับไปใช้ CSS ปกติ
+  addToCartBtn.style.cursor = 'pointer';
+}
+    }
+
+    fetch(`https://lestialv.ddns.net:3001/api/products/${productId}`)
+        .then(response => response.json())
+        .then(product => {
+            if (product.message) {
+                console.error("Product not found");
+                return;
+            }
+
+            currentProduct = product;
+
+            document.querySelector('.product-image').src = `../Server/${product.Product_img}`;
+            document.querySelector('.product-price').textContent = `฿ ${product.Product_price}`;
+            document.querySelector('.quantity').textContent = `จำนวนสินค้า: ${product.Product_count}`;
+            document.querySelector('.description').textContent = product.Product_description;
+            document.querySelector('.name').textContent = product.Product_name;
+
+            validateQuantity();
+            outOfStock(product);
+
+            addToCartBtn.addEventListener('click', () => {
+                addToCart(product, quantityInput.value);
+            });
+        })
+        .catch(error => console.error("Error loading product details:", error));
+});
+
+function outOfStock(product) {
+    const addToCartBtn = document.getElementById('addToCart');
+    if (product.Product_status === "out-of-stock" || product.Product_count <= 0) {
+        addToCartBtn.disabled = true;
+        addToCartBtn.textContent = "สินค้าหมด";
+        addToCartBtn.style.backgroundColor = 'gray';
+        addToCartBtn.style.cursor = 'not-allowed';
+        addToCartBtn.onclick = () => {
+            Swal.fire({title:"สินค้าหมด", icon:"info"});
+        };
+    } else {
+        addToCartBtn.disabled = false;
+        addToCartBtn.textContent = "เพิ่มลงในตะกร้าสินค้า";
+        addToCartBtn.style.backgroundColor = '';
+        addToCartBtn.style.cursor = 'pointer';
+        addToCartBtn.onclick = null;
+    }
+}
+
+function addToCart(product, quantity) {
+ const userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');    
+    if (!userId) {
+        Swal.fire({title:"กรุณาเข้าสู่ระบบก่อนเพิ่มสินค้าในตะกร้า!" , icon:"warning"});
+        return;
+    }
+
+    fetch('https://lestialv.ddns.net:3001/updatecart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            UserID: userId,
+            Product_id: product.Product_id,
+            quantity: quantity
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            Swal.fire({title:"เกิดข้อผิดพลาด: " + data.error, icon:"error"});
+        } else {
+            Swal.fire({title:`${product.Product_name} ถูกเพิ่มลงในตะกร้า!`, icon:"success"
+            }).then(() => {
+                window.location.href = "../carts";}); // เปลี่ยนเส้นทางไปยังหน้าตะกร้าสินค้า
+             // เปลี่ยนเส้นทางไปยังหน้าตะกร้าสินค้า
+           // updateCartCount(); // ฟังก์ชันนี้ไว้ใช้แสดงยอดรวมในตะกร้า
+        }
+    })
+    .catch(error => {
+        console.error('Error adding to cart:', error);
+        Swal.fire({title:"เกิดข้อผิดพลาด โปรดลองอีกครั้ง!", icon:"error"});
+    });
+}
+
+</script>
+</body>
+</html>

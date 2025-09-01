@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/showToast.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="cursor: pointer;" onclick="home()">Lestial V</h3>
+                <button class="toggle-sidebar" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">แดชบอร์ด</div>
+                <a href="../dashboard/" class="menu-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ภาพรวม</span>
+                </a>
+                <div class="menu-category">ตำสั่งซื้อ</div>
+                <a href="../adminorders/" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>จัดการคำสั่งซื้อ</span>
+                    <span class="notify-badge" id="orderNotify" style="display:none;position:absolute;top:8px;right:8px;background:#e53e3e;color:#fff;font-size:0.8rem;padding:2px 8px;border-radius:999px;z-index:2;"></span>
+                </a>
+               <!-- <a href="#" class="menu-item">
+                    <i class="fas fa-ban"></i>
+                    <span>Canceled Orders</span>
+                </a>-->
+                <div class="menu-category">สินค้า</div>
+                <a href="../adminnovel/" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>จัดการนิยาย</span>
+                </a>
+                <a href="../adminpanel/" class="menu-item">
+                    <i class="fas fa-boxes"></i>
+                    <span>จัดการสินค้า</span>
+            
+                </a>
+                <div class="menu-category">ผู้ใช้</div>
+                <a href="../AccessControl/" class="menu-item" >
+                    <i class="fas fa-users"></i>
+                    <span>จัดการผู้ใช้</span>
+                </a>
+                <a href="/logproduct/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขสินค้า</span>
+                </a>
+                <a href="/logorders/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขคำสั่งซื้อ</span>
+                </a>
+                <div class="menu-category"></div>
+
+                <a href="#" onclick="logout()" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="user-profile">
+                       <!-- <img src="/api/placeholder/36/36" alt="Admin">
+                        <span>Admin</span>-->
+                    </div>
+                </div>
+            </div>
+            <div id="toast" class="toast"></div>
+            <!-- Content -->
+            <div class="content">
+                <h2 class="page-title">Dashboard</h2>
+
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #e7f5ff; color: #1c7ed6;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="total-orders">0</h4>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color: #e3fcef; color: #0ca678;">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="total-revenue">฿0</h4>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Monthly Sales -->
+                <div class="card">
+                    <div class="card-header">
+                        <label for="month-selector">เลือกเดือน/ปี:</label>
+                        <select id="month-selector">
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="card-body">
+                      <!--  <h3>Total Revenue: <span id="total-revenue">฿0</span></h3>-->
+                        <div class="chart-container">
+                            <canvas id="monthly-sales-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="monthly-pie-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+               
+
+                <div class="novels-container max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">อัปเดตข้อมูลลิงก์</h3>
+                    <div class="flex items-center space-x-4">
+                        <input
+                            id="newLinkInput" type="text"
+                            placeholder="กรอกลิงก์ Embed ใหม่..."
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition w-full"
+                        />
+                        <button
+                            id="updateLinkButton" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition flex-shrink-0"
+                        >
+                        อัปเดต
+                        </button>
+                    </div>
+                    <div id="updateStatus" class="status-message mt-4"></div>
+                </div>
+                <div class="max-w-8xl mx-auto mt-8 bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">ตารางข้อมูลโซเชียล</h3>
+                    <div class="mb-4 flex justify-end">
+                        <button id="addMemberBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg shadow flex items-center">
+                            <i class="fas fa-user-plus mr-2"></i> เพิ่ม Member
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">ชื่อ</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">รายละเอียด</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">X</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Tiktok</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Youtube</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Icon</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">รูป</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">สีพื้นหลัง</th>
+                                    <th class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase">แก้ไข</th>
+                                    <th class="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase">ลบ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- ตัวอย่างข้อมูลแถวเดียว ลบหรือทำซ้ำตามต้องการ -->
+                                <tr>
+                                    <td class="px-4 py-2">ตัวอย่าง</td>
+                                    <td class="px-4 py-2">รายละเอียด</td>
+                                    <td class="px-4 py-2">https://x.com/example</td>
+                                    <td class="px-4 py-2">https://tiktok.com/@example</td>
+                                    <td class="px-4 py-2">https://youtube.com/example</td>
+                                    <td class="px-4 py-2">
+                                        <img src="iconimg-url.jpg" alt="icon" class="w-8 h-8 rounded-full object-cover" />
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <img src="img-url.jpg" alt="img" class="w-12 h-8 rounded object-cover" />
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span class="inline-block w-6 h-6 rounded" style="background:#f3f4f6"></span>
+                                    </td>
+                                    <td class="px-4 py-2 text-center">
+                                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded transition text-sm flex items-center justify-center">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+                                    <td class="px-4 py-2 text-center">
+                                        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition text-sm flex items-center justify-center">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- /ตัวอย่าง -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md hidden" id="memberFormContainer">
+                    <h3 class="text-xl font-semibold mb-4">เพิ่มข้อมูลโซเชียล</h3>
+                    <form id="socialForm" class="space-y-4" enctype="multipart/form-data">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-1">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+                        </div>
+                        <div>
+                            <label for="description" class="block text-gray-700 font-medium mb-1">Description</label>
+                            <textarea id="description" name="description" required rows="3"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"></textarea>
+                        </div>
+                        <div>
+                            <label for="x" class="block text-gray-700 font-medium mb-1">X (Twitter)</label>
+                            <input type="text" id="x" name="x"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+                        </div>
+                        <div>
+                            <label for="tiktok" class="block text-gray-700 font-medium mb-1">Tiktok</label>
+                            <input type="text" id="tiktok" name="tiktok"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+                        </div>
+                        <div>
+                            <label for="youtube" class="block text-gray-700 font-medium mb-1">Youtube</label>
+                            <input type="text" id="youtube" name="youtube"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+                        </div>
+                        <div>
+  <label for="iconimg">Icon Image</label>
+  <input type="file" id="iconimg" name="iconimg" accept="image/*" />
+  <img id="iconimg-preview" src="" alt="icon preview" style="width:40px;height:40px;display:block;margin-top:4px;">
+</div>
+<div>
+  <label for="img">Image</label>
+  <input type="file" id="img" name="img" accept="image/*" />
+  <img id="img-preview" src="" alt="img preview" style="width:60px;height:40px;display:block;margin-top:4px;">
+</div>
+<input type="hidden" id="iconimg-old" name="iconimg-old" />
+<input type="hidden" id="img-old" name="img-old" />
+                        <div>
+                            <label for="bgColor" class="block text-gray-700 font-medium mb-1">Background Color</label>
+                            <input type="color" id="bgColor" name="bgColor"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition">
+                            บันทึกข้อมูล
+                        </button>
+                    </form>
+                    <div id="formStatus" class="mt-4 text-sm"></div>
+                </div>                
+
+
+            </div>
+        </div>
+    </div>
+    <script src="/notify.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

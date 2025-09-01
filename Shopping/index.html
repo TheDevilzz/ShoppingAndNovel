@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThaiShop - ร้านค้าออนไลน์</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">ThaiShop</a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">หน้าแรก</a>
+                    <a href="products.html">สินค้า</a>
+                    <a href="novels.html">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+                <div class="search-container">
+                    <form id="searchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="nav-actions">
+                    
+                    </button>
+                    <button id="cartBtn" class="icon-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button id="userBtn" class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div id="userDropdownContent">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <form id="mobileSearchForm">
+                        <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-nav-links">
+                    <a href="index.html" class="active">หน้าแรก</a>
+                    <a href="products.html">สินค้า</a>
+                    <a href="novels.html">นิยาย</a>
+                    <a href="about.html">เกี่ยวกับเรา</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ยินดีต้อนรับสู่ ThaiShop</h1>
+                <p>ร้านค้าออนไลน์คุณภาพสำหรับทุกความต้องการ</p>
+                <a href="products.html" class="btn-primary">ช้อปเลย</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section (will show if there are favorites) -->
+    <section class="favorites-section" style="display: none;" id="favoritesSection">
+        <div class="container">
+            <h2>รายการโปรด</h2>
+            <div class="product-grid" id="favoriteProducts"></div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+
+    <!-- Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <h2>หมวดหมู่สินค้า</h2>
+            <div id="categoryContainers"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Lestial V. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
