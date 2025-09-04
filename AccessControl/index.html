@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js">
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/showToast.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        } @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #141b34;
+            background: #ffffff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #141b34;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.primary {
+            background: #141b34;
+            color: #ffffff;
+            border: none;
+        }
+
+        button.primary:hover {
+            background: #1f2937;
+        }
+
+        button.secondary {
+            background: #ffffff;
+            color: #141b34;
+            border: 1px solid #d9d9d9;
+        }
+
+        button.secondary:hover {
+            background: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="cursor: pointer;" onclick="home()">Lestial V</h3>
+                <button class="toggle-sidebar" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">แดชบอร์ด</div>
+                <a href="../dashboard/" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ภาพรวม</span>
+                </a>
+                <div class="menu-category">ตำสั่งซื้อ</div>
+                <a href="../adminorders/" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>จัดการคำสั่งซื้อ</span>
+                    <span class="notify-badge" id="orderNotify" style="display:none;position:absolute;top:8px;right:8px;background:#e53e3e;color:#fff;font-size:0.8rem;padding:2px 8px;border-radius:999px;z-index:2;"></span>
+                </a>
+               <!-- <a href="#" class="menu-item">
+                    <i class="fas fa-ban"></i>
+                    <span>Canceled Orders</span>
+                </a>-->
+                <div class="menu-category">สินค้า</div>
+                <a href="../adminnovel/" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>จัดการนิยาย</span>
+                </a>
+                <a href="../adminpanel/" class="menu-item">
+                    <i class="fas fa-boxes"></i>
+                    <span>จัดการสินค้า</span>
+                </a>
+                <div class="menu-category">ผู้ใช้</div>
+                <a href="../AccessControl/" class="menu-item active" >
+                    <i class="fas fa-users"></i>
+                    <span>จัดการผู้ใช้</span>
+                </a>
+                <a href="/logproduct/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขสินค้า</span>
+                </a>
+                <a href="/logorders/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขคำสั่งซื้อ</span>
+                </a>
+                <div class="menu-category"></div>
+
+                <a href="#" onclick="logout()" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+        <!--<aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>LESTIAL V</h1>
+            </div>
+            
+            <div class="sidebar-content">
+                <nav class="nav-section">
+                    <a href="../" class="nav-item">
+                        <i class='bx bxs-home'></i>
+                        <span>หน้าแรก</span>
+                    </a>
+                    <a href="../" class="nav-item">
+                        <i class='bx bxs-dashboard'></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="../adminpanel/" class="nav-item">
+                        <i class='bx bxs-box'></i>
+                        <span>สินค้า</span>
+                    </a>
+                    <a href="../adminorders/" class="nav-item">
+                        <i class='bx bxs-cart'></i>
+                        <span>คำสั่งซื้อ</span>
+                    </a>
+                </nav>
+                <div class="nav-section active">
+                    <div class="section-label">นิยาย</div>
+                    <a href="/adminnovel/" class="nav-item">
+                        <i class='bx book-info'></i>
+                        <span>นิยาย</span>
+                    </a>
+                </div>
+                <div class="nav-section active">
+                    <div class="section-label">ผู้ดูแลระบบ</div>
+                    <a href="./" class="nav-item active">
+                        <i class='bx bxs-shield'></i>
+                        <span>จัดการผู้ใช้</span>
+                    </a>
+                </div>
+
+                
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" onclick="logout()" class="nav-item">
+                    <i class='bx bx-log-out'></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </aside>-->
+
+        <main class="main-content">
+            <div class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="user-profile">
+                       <!-- <img src="/api/placeholder/36/36" alt="Admin">
+                        <span>Admin</span>-->
+                    </div>
+                </div>
+            </div>
+            <div id="toast" class="toast"></div>
+            <h1>จัดการผู้ใช้</h1>
+            <button class="button primary" id="addRegisterButton">
+                <i class='bx bx-plus'></i>
+                เพิ่มผู้ใช้
+            </button>
+            
+            <div style="margin-bottom: 1rem;">
+                <input type="text" id="searchUserId" placeholder="ค้นหา UserID หรือ Username" style="padding:0.5rem; margin-top: 5px; border-radius:4px; border:1px solid #ccc;">
+                <div style="margin-top: 5px;">
+                    <button type="button" id="searchUserBtn" class="primary" style="margin-left:5px;">ค้นหา</button>
+                    <button type="button" id="clearSearchBtn" class="secondary" style="margin-left:4px;">ล้าง</button>
+                </div>
+                
+            </div>
+            
+            <div id="addRegister" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+                <div class="containers" style="background: white; padding: 2rem; border-radius: 12px; max-width: 600px;">
+                    <h1>เพิ่มผู้ใช้</h1>
+                    <form id="addRegisterForm" class="addRegisterForm">
+                        <div class="form-grid">
+                            <div>
+                                <div class="form-group">
+                                    <label for="username">ชื่อผู้ใช้</label>
+                                    <input type="text" id="username" placeholder="ชื่อผู้ใช้">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">ชื่อ</label>
+                                    <input type="text" id="name" placeholder="ชื่อ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">นามสกุล</label>
+                                    <input type="text" id="lastname" placeholder="นามสกุล">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">รหัสผ่าน</label>
+                                    <input type="password" id="password" placeholder="รหัสผ่าน">
+                                </div>
+                                <div class="form-group">
+                                    <label for="re-password">ยืนยัน รหัสผ่าน</label>
+                                    <input type="password" id="re-password" placeholder="ยืนยัน รหัสผ่าน">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">อีเมล</label>
+                                    <input type="email" id="email" placeholder="อีเมล">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="button" class="secondary" id="closeModal">ยกเลิก</button>
+                            <button type="submit" class="primary">บันทึก</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="orders-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รหัสผู้ใช้</th>
+                            <th>ชื่อผู้ใช้</th>
+                            <th>ชื่อจริง</th>
+                            <th>นามสกุล</th>
+                            <th>อีเมล</th>
+                            <th>บทบาท</th>
+                            <th>เหรียญ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-body">
+                        <tr>
+                            <td>01</td>
+                            <td>
+                                <div class="product-cell">
+                                   
+                                    <span>Zoe Acrylic Keychain</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="date-cell">
+                                    <div>11 Feb 2025</div>
+                                    <div class="time">09:25 PM</div>
+                                </div>
+                            </td>
+                            <td>฿ 89.00</td>
+                            <td>Keychain</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>
+                                <div class="product-cell">
+                                    
+                                    <span>Skyler Voice Pack</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="date-cell">
+                                    <div>11 Feb 2025</div>
+                                    <div class="time">07:12 PM</div>
+                                </div>
+                            </td>
+                            <td>฿ 129.00</td>
+                            <td>Voice Pack</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+               <!-- <div class="table-footer">
+                    <button class="see-more">See More</button>
+                </div>-->
+            </div>
+        </main>
+    </div>
+    <script src="/notify.js"></script>
+    <script src="./script.js"></script>
+    <script src="/showToast.js"></script>
+</body>
+</html>

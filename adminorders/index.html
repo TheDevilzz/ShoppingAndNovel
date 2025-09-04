@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lestial V Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js">
+    <link rel="stylesheet" href="../dashboard/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+    <div class="dashboard">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="cursor: pointer;" onclick="home()">Lestial V</h3>
+                <button class="toggle-sidebar" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">แดชบอร์ด</div>
+                <a href="../dashboard/" class="menu-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ภาพรวม</span>
+                </a>
+                <div class="menu-category">ตำสั่งซื้อ</div>
+                <a href="../adminorders/" class="menu-item active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>จัดการคำสั่งซื้อ</span>
+                    <span class="notify-badge" id="orderNotify" style="display:none;position:absolute;top:8px;right:8px;background:#e53e3e;color:#fff;font-size:0.8rem;padding:2px 8px;border-radius:999px;z-index:2;"></span>
+                </a>
+               <!-- <a href="#" class="menu-item">
+                    <i class="fas fa-ban"></i>
+                    <span>Canceled Orders</span>
+                </a>-->
+                <div class="menu-category">สินค้า</div>
+                <a href="../adminnovel/" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>จัดการนิยาย</span>
+                </a>
+                <a href="../adminpanel/" class="menu-item">
+                    <i class="fas fa-boxes"></i>
+                    <span>จัดการสินค้า</span>
+                </a>
+                <div class="menu-category">ผู้ใช้</div>
+                <a href="../AccessControl/" class="menu-item" >
+                    <i class="fas fa-users"></i>
+                    <span>จัดการผู้ใช้</span>
+                </a>
+                <a href="/logproduct/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขสินค้า</span>
+                </a>
+                <a href="/logorders/" class="menu-item" >
+                    <i class="fas fa-list-alt"></i>
+                    <span>บันทึกการแก้ไขคำสั่งซื้อ</span>
+                </a>
+                <div class="menu-category"></div>
+
+                <a href="#" onclick="logout()" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </div>
+       <!-- <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>LESTIAL V</h1>
+            </div>
+            
+            <div class="sidebar-content">
+                <nav class="nav-section">
+                    <a href="../" class="nav-item">
+                        <i class='bx bxs-home'></i>
+                        <span>หน้าแรก</span>
+                    </a>
+                    <a href="../" class="nav-item">
+                        <i class='bx bxs-dashboard'></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="../adminpanel/" class="nav-item">
+                        <i class='bx bxs-box'></i>
+                        <span>สินค้า</span>
+                    </a>
+                    <a href="#" class="nav-item active">
+                        <i class='bx bxs-cart'></i>
+                        <span>คำสั่งซื้อ</span>
+                    </a>
+                </nav>
+                <div class="nav-section">
+                <div class="section-label">นิยาย</div>
+                    <a href="../AdminNovel/" class="nav-item">
+                        <i class='bx bxs-shield'></i>
+                        <span>นิยาย</span>
+                    </a>
+                </div>
+
+                <div class="nav-section active">
+                    <div class="section-label">ผู้ดูแลระบบ</div>
+                    <a href="../AccessControl/" class="nav-item">
+                        <i class='bx bxs-shield'></i>
+                        <span>จัดการผู้ใช้</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" onclick="logout()" class="nav-item">
+                    <i class='bx bx-log-out'></i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </div>
+        </aside>-->
+
+        <main class="main-content">
+            <div class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <!-- <img src="/api/placeholder/36/36" alt="Admin"> -->
+                        
+                    </div>
+                </div>
+            </div>
+            <h1>คำสั่งซื้อ</h1>
+            <div>
+                <label for="month-select">เลือกเดือน:</label>
+                <select id="month-select" onchange="fetchOrdersByMonthAndYear(this.value, document.getElementById('year-select').value)">
+                    <option value="0">แสดงข้อมูลทั้งหมด</option>
+                    <option value="1">มกราคม</option>
+                    <option value="2">กุมภาพันธ์</option>
+                    <option value="3">มีนาคม</option>
+                    <option value="4">เมษายน</option>
+                    <option value="5">พฤษภาคม</option>
+                    <option value="6">มิถุนายน</option>
+                    <option value="7">กรกฎาคม</option>
+                    <option value="8">สิงหาคม</option>
+                    <option value="9">กันยายน</option>
+                    <option value="10">ตุลาคม</option>
+                    <option value="11">พฤศจิกายน</option>
+                    <option value="12">ธันวาคม</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="year-select">เลือกปี:</label>
+                <select id="year-select" onchange="fetchOrdersByMonthAndYear(document.getElementById('month-select').value, this.value)">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <!-- เพิ่มปีอื่นๆ ที่ต้องการ -->
+                </select>
+            </div>            
+            
+            <div>
+                <label for="status-select">เลือกสถานะคำสั่งซื้อ:</label>
+                <select id="status-select" onchange="fetchOrdersWithFilters()">
+                    <option value="">ทั้งหมด</option>
+                    <option value="ยกเลิกคำสั่งซื้อ">ยกเลิกคำสั่งซื้อ</option>
+                    <option value="รอการชำระเงิน">รอการชำระเงิน</option>
+                    <option value="รอพนักงานรับคำสั่งซื้อ">รอพนักงานรับคำสั่งซื้อ</option>
+                    <option value="พนักงานรับคำสั่งซื้อ">พนักงานรับคำสั่งซื้อ</option>
+                    <option value="พนักงานจัดส่ง">พนักงานจัดส่ง</option>
+                </select>
+            </div>
+            <div>
+                <label for="status-select">เลือกสถานะ:</label>
+                <select id="read-select" onchange="fetchOrdersWithReadFilters()">
+                    <option value="">ทั้งหมด</option>
+                    <option value="0">ยังไม่ได้อ่าน</option>
+                    <option value="1">อ่านแล้ว</option>
+                </select>
+            </div>
+
+            <div class="orders-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รหัสคำสั่งซื้อ</th>
+                            <th>ชื่อสินค้า</th>
+                            <th>ที่อยู่</th>
+                            <th onclick="sortByOrderDate()" style="cursor:pointer;">วันที่สั่งซื้อ <span id="orderDateSortIcon">⇅</span></th>
+                            <th>ราคาสินค้า</th>
+                            
+                            <th>สถานะ</th>
+                            <th>เลขพัสดุ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-body">
+                        <tr>
+                            <td>01</td>
+                            <td>
+                                <div class="product-cell">
+                                   
+                                    <span>Zoe Acrylic Keychain</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="date-cell">
+                                    <div>11 Feb 2025</div>
+                                    <div class="time">09:25 PM</div>
+                                </div>
+                            </td>
+                            <td>฿ 89.00</td>
+                            <td>Keychain</td>
+                            <td>-</td>
+                        </tr>
+                        <div class="cart-items" id="cart-items" onclick="closeCart()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+                                
+                        </div>
+                        <tr>
+                            <td>02</td>
+                            <td>
+                                <div class="product-cell">
+                                    
+                                    <span>Skyler Voice Pack</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="date-cell">
+                                    <div>11 Feb 2025</div>
+                                    <div class="time">07:12 PM</div>
+                                </div>
+                            </td>
+                            <td>฿ 129.00</td>
+                            <td>Voice Pack</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+               <!-- <div class="table-footer">
+                    <button class="see-more">See More</button>
+                </div>-->
+            </div>
+        </main>
+    </div>
+    <script src="/notify.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

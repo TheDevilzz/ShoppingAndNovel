@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>lestialv</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/showToast.css">
+    <link rel="stylesheet" href="/orders/css/navbar.css">
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="containers">
+        <nav class="nav">
+            <a href="/" class="logo">Lestial V</a>
+            <div class="nav-links">
+                <a href="/" >หน้าแรก</a>
+                <a href="/shop">สินค้า</a>
+                <a href="/novel/" class="active">นิยาย</a>
+                <a href="/About/">เกี่ยวกับเรา</a>
+            </div>
+            <!--<div class="search-container">
+                <form id="searchForm">
+                    <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>-->
+            <div class="nav-actions">
+                <button id="cartBtn" class="icon-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+                <button id="userBtn" class="icon-btn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div style="max-width: 1200px; position: relative;">
+                    <div class="user-dropdown" id="userDropdown">
+                        <div id="userDropdownContent">
+                            <!-- Will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+           <!-- <div class="mobile-search">
+                <form id="mobileSearchForm">
+                    <input type="text" placeholder="ค้นหาสินค้า..." id="mobileSearchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>-->
+            <div class="mobile-nav-links">
+                <a href="/" >หน้าแรก</a>
+                <a href="/shop" >สินค้า</a>
+                <a href="/novel/" class="active">นิยาย</a>
+                <a href="about.html">เกี่ยวกับเรา</a>
+            </div>
+        </div>
+    </div>
+</header>
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+          <p id="popup-message">ข้อความ</p>
+          <button onclick="closePopup()">ปิด</button>
+        </div>
+      </div>
+     
+    </div>
+    <div class="editpopup hidden">
+        <div class="editcontent">
+        <h2>สร้างนิยายรายตอน</h2>
+        <div class="form-grid">
+         <!-- <label class="cover-upload">
+            <span class="camera">📷</span>
+            <img id="coverPreview" alt="Cover Preview"/>
+            <input type="file" accept="image/*" onchange="previewCover(event)">
+          </label>-->
+      
+          <div class="form-fields">
+            <div class="form-group">
+              <label>ชื่อเรื่อง*</label>
+              <input type="text" id="title" maxlength="120" placeholder="ใส่ชื่อเรื่อง" required>
+            </div>
+            <div class="form-grid">
+                <lable>สถานะ</lable>
+                <select id="Novelstatus">
+                    <option value="ยังไม่จบ">ยังไม่จบ</option>
+                    <option value="จบแล้ว">จบแล้ว</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label>เรื่องย่อ*</label>
+              <div class="toolbar">
+                <button onclick="formatText('bold')"><b>B</b></button>
+                <button onclick="formatText('italic')"><i>I</i></button>
+                <button onclick="formatText('underline')"><u>U</u></button>
+              </div>
+              <div class="editor" contenteditable="true" id="editor" placeholder="เรื่องย่อต้องไม่น้อยกว่า 1 ตัวอักษร">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <button onclick="closeEdit()" class="w-1/3 bg-red-600 text-white py-3 rounded-lg font-medium hover:bg-red-700">ยกเลิก</button>
+          <button onclick="submitStory()" class="w-1/3 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 "> บันทึก </button>
+        </div>
+        
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="book-details">
+            
+            <div class="book-info"> 
+                <div class="cover">
+                  <img src="path/to/book-cover.jpg" id="imgcover">
+                </div>
+                <div class="details">
+                    <h1 id="Novelname">ชื่อเรื่อง</h1>
+                  <p>จำนวนตอน: <span class="chapters">-</span> <p id="status">(ยังไม่จบ)</p></p>
+                  <p>อัปเดตเมื่อ: <span class="updated-date">-</span></p>
+                    <p>ผู้แต่ง: <span class="author">-</span></p>
+                  <p>เรื่องย่อ: <span class="description">-</span></p>
+                  <div class="actions">
+                   <!-- <button class="read-button" onclick="editer()">แก้ไข</button>-->
+                   <button class="add-to-library-button" onclick="addToFavorite()">เพิ่มในรายการโปรด</button>
+                  </div>
+                </div>
+              </div>              
+        </section>
+
+        <div class="content-sidebar-wrapper">
+            <section class="chapter-list">
+                <h2>รายการตอน</h2>
+                <label for="sortOrderBtn" id="sortOrderLabel" style="cursor:pointer;">
+                  เรียงลำดับ <span id="sortArrow">↑</span>
+                </label>
+                <button id="sortOrderBtn" type="button" style="display:none;">Toggle</button>
+
+                <div class="filter-sort">
+                    <a id="NovelAdd" href="#">
+                    
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                    </li>
+                </ul>
+                
+            </section>
+
+        </div>
+        <div id="toast" class="toast"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> By TheDevilzz. สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/scriptdropdown.js"></script>
+    <script src="/showToast.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
